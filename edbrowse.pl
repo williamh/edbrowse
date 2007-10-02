@@ -9,7 +9,7 @@ use Time::Local;
 =head1 Author
 
 	Karl Dahlke
-	karl@eklhad.net
+	eklhad@comcast.net
 	248-524-1004 (during regular business hours)
 	http://www.eklhad.net/linux/app
 
@@ -266,7 +266,7 @@ if(! -d $rbin) {
 $rbin = "" unless mkdir $rbin, 0700;
 }
 #  Config file for this browser.
-#  Sample file is available at http://www.eklhad.net/linux/app/sample.ebrc
+#  Sample file is available at http://www.eklhad.net/linux/app/sample.perl.ebrc
 $rcFile = "$home/.ebrc";
 #  Last http header, normally deleted before you read the web page.
 $ebhttp = "$rbin/eb.http";
