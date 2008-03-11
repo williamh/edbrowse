@@ -260,8 +260,8 @@ dieq 'home directory not defined by $HOME.';
 -d $home or
 dieq "$home is not a directory.";
 
-#  Establish the recycle bin, for deleted files.
-$rbin = "$home/.recycle";
+#  Establish the trash bin, for deleted files.
+$rbin = "$home/.trash";
 if(! -d $rbin) {
 $rbin = "" unless mkdir $rbin, 0700;
 }
@@ -2477,12 +2477,12 @@ return 1;
 }  # delText
 
 #  Delete files from a directory as you delete lines.
-#  It actually moves them to your recycle bin.
+#  It actually moves them to your trash bin.
 sub delFiles()
 {
 $dw or $errorMsg = "directories are readonly, type dw to enable directory writes", return 0;
 $dw == 2 or length $rbin or
-$errorMsg = "could not create .recycle under your home directory, to hold the deleted files", return 0;
+$errorMsg = "could not create .trash under your home directory, to hold the deleted files", return 0;
 my $ln = $startRange;
 my $cnt = $endRange - $startRange + 1;
 while($cnt--) {
@@ -2492,7 +2492,7 @@ unlink "$dirname/$f" or
 $errorMsg = "could not remove $f, $!", return 0;
 } else {
 rename "$dirname/$f", "$rbin/$f" or
-$errorMsg = "Could not move $f to the recycle bin, $!, set dx mode to actually remove the file", return 0;
+$errorMsg = "Could not move $f to the trash bin, $!, set dx mode to actually remove the file", return 0;
 }
 delText($ln, $ln);
 substr($labels, $dirSufStart + 2*$ln, 2) = "";
